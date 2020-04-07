@@ -1,0 +1,232 @@
+{
+  "reservations": [
+    {
+      "id": "61187808",
+      "user": "alex@gmail.com",
+      "city": "Одеса",
+      "arrivalDate": "5-го листопада 2022",
+      "arrivalTime": "10:00",
+      "nights": "3",
+      "guests": "2",
+      "status": "Підтверджено",
+      "bookedOn": "2020-04-05T23:33:00+03:00",
+      "price": 684
+    },
+    {
+      "id": "61189043",
+      "user": "alex@gmail.com",
+      "city": "Одеса",
+      "arrivalDate": "5-го листопада 2022",
+      "arrivalTime": "11:00",
+      "nights": "3",
+      "guests": "2",
+      "status": "Підтверджено",
+      "bookedOn": "2020-04-05T23:35:04+03:00",
+      "price": 603
+    },
+    {
+      "id": "61190033",
+      "user": "alex@gmail.com",
+      "city": "Одеса",
+      "arrivalDate": "5-го листопада 2022",
+      "arrivalTime": "10:00",
+      "nights": "3",
+      "guests": "2",
+      "status": "Підтверджено",
+      "bookedOn": "2020-04-05T23:36:43+03:00",
+      "price": 720
+    },
+    {
+      "id": "61189045",
+      "user": "alex2@gmail.com",
+      "city": "Одеса",
+      "arrivalDate": "5-го листопада 2022",
+      "arrivalTime": "11:00",
+      "nights": "3",
+      "guests": "2",
+      "status": "Підтверджено",
+      "bookedOn": "2020-04-05T23:35:04+03:00",
+      "price": 603
+    },
+    {
+      "id": "61204202",
+      "user": "alex@gmail.com",
+      "city": "Одеса",
+      "arrivalDate": "5-го листопада 2022",
+      "arrivalTime": "10:00",
+      "nights": "3",
+      "guests": "2",
+      "status": "Підтверджено",
+      "bookedOn": "2020-04-06T00:00:20+03:00",
+      "price": 642
+    },
+    {
+      "id": "61204476",
+      "user": "alex@gmail.com",
+      "city": "Одеса",
+      "arrivalDate": "5-го листопада 2022",
+      "arrivalTime": "10:00",
+      "nights": "3",
+      "guests": "2",
+      "status": "Підтверджено",
+      "bookedOn": "2020-04-06T00:00:47+03:00",
+      "price": 693
+    },
+    {
+      "id": "61225805",
+      "user": "alex3@gmail.com",
+      "city": "Одеса",
+      "arrivalDate": "5-го листопада 2022",
+      "arrivalTime": "10:00",
+      "nights": "3",
+      "guests": "2",
+      "status": "Підтверджено",
+      "bookedOn": "2020-04-06T00:36:20+03:00",
+      "price": 603
+    },
+    {
+      "id": "61228459",
+      "user": "alex3@gmail.com",
+      "city": "Одеса",
+      "arrivalDate": "5-го листопада 2022",
+      "arrivalTime": "10:00",
+      "nights": "3",
+      "guests": "2",
+      "status": "Підтверджено",
+      "bookedOn": "2020-04-06T00:40:46+03:00",
+      "price": 600
+    }
+  ],
+  "events": [
+    {
+      "title": "Новина №1",
+      "description": "Чотиризірковий готель Favor Park розташований у Києві, за 3,2 км від Національного комплексу “Експоцентр України”. Стійка реєстрації працює вдень і вночі.",
+      "img": "/img/event-book.jpg",
+      "date": "31.12.2019"
+    },
+    {
+      "title": "Новина №21",
+      "description": "Чотиризірковий готель Favor Park розташований у Києві, за 3,2 км від Національного комплексу “Експоцентр України”. Стійка реєстрації працює вдень і вночі.",
+      "img": "/img/event-grass.jpg",
+      "date": "20.11.2019"
+    },
+    {
+      "title": "Новина №3",
+      "description": "Чотиризірковий готель Favor Park розташований у Києві, за 3,2 км від Національного комплексу “Експоцентр України”. Стійка реєстрації працює вдень і вночі.",
+      "img": "/img/event-book.jpg",
+      "date": "11.10.2019"
+    },
+    {
+      "title": "Новина №4",
+      "description": "Чотиризірковий готель Favor Park розташований у Києві, за 3,2 км від Національного комплексу “Експоцентр України”. Стійка реєстрації працює вдень і вночі.",
+      "img": "/img/event-grass.jpg",
+      "date": "31.09.2019"
+    },
+    {
+      "title": "Новина №5",
+      "description": "Чотиризірковий готель Favor Park розташований у Києві, за 3,2 км від Національного комплексу “Експоцентр України”. Стійка реєстрації працює вдень і вночі.",
+      "img": "/img/event-book.jpg",
+      "date": "03.07.2019"
+    },
+    {
+      "title": "Новина №6",
+      "description": "Чотиризірковий готель Favor Park розташований у Києві, за 3,2 км від Національного комплексу “Експоцентр України”. Стійка реєстрації працює вдень і вночі.",
+      "img": "/img/event-grass.jpg",
+      "date": "30.05.2019"
+    }
+  ],
+  "subscriptions": [
+    {
+      "endpoint": "https://fcm.googleapis.com/fcm/send/eGUwk_sx8xs:APA91bEdkEj7aNACMhDtmCQ2pqBoo4wEFGkfFN_Z_wH9OpQQ7Mano5h0tm94vfBXgMVmNrkRi3o7dWCphPHascVZXCTR91UJOwfc4EUdtCfT3rJi8l-NbiWhEw88ivqN5kioi0-kNzpm",
+      "expirationTime": null,
+      "keys": {
+        "p256dh": "BCGEEXyDui__yeE2J4kM_Xdd4WbGXcMB-l9bAc4qHZwYPL_bFMcxIdJAVsAqtneglfLIrhTuOwG3jvpaj1WWGLs",
+        "auth": "kfwVrhOe__WsrlxPxRdNCg"
+      }
+    },
+    {
+      "endpoint": "https://fcm.googleapis.com/fcm/send/dgN2bNUWlnM:APA91bGWKa_NSV6BoZ8A8G8HYiTSTph6nBJnMoFtcnH1HVSgoj80t7zIfejiXZB_O0jAtpW8AppJDZfum35scUcYXbXvdcR2hRmmxeOja3QX4m8ej_idqC-HkUYMSVLtre2N8-HyoPqi",
+      "expirationTime": null,
+      "keys": {
+        "p256dh": "BCpExURVZrzGIIEpyIvFQDargcJ6Ae9W-0Bxywx4PUc69DKkD_YCFRDUmkZQoWY4eI3illPnxARkdBxNSrzvgp4",
+        "auth": "atJCoLuj12oktnH25FRtmQ"
+      }
+    },
+    {
+      "endpoint": "https://fcm.googleapis.com/fcm/send/ejVUW8ybAds:APA91bGCaSN4-osGV-iHnhuvcW55h_iVzDqfPTUWZ3dO8bT0SKrA2ayDJu9XLSwK1gBLre3r0EXI3Ve5d_VGzMHUnDoMZkoXyg_UkVnXH0yvksCyr_t-hlFFL6Cq4QBkGKKrt3MuozaI",
+      "expirationTime": null,
+      "keys": {
+        "p256dh": "BMzEkMqcTdooNV5zf-TptINFgUT6f_RJtQVIc8y_JYzeD9A43INU8CBtyck91lMnK6RHf8FLEW2TDlK2UrJsK1s",
+        "auth": "4b0bG58dqk6a2ngGj-YAgg"
+      }
+    },
+    {
+      "endpoint": "https://fcm.googleapis.com/fcm/send/fapx8Qm64KI:APA91bFu4Jp_2iYJBJdeIv9Cuacwmdoha1zKRLEWGRlj8_-mAZs5yIx2tMB9kld6LUdRoDCIRALyshjW4Yn9dkZhekIm2rKgexvYQUYJf5Fi7pLq3fxmsPMURHTHLJJ6EJkoZmXXTcMW",
+      "expirationTime": null,
+      "keys": {
+        "p256dh": "BMApQONuBZ2R3s6hEk3b2nRcRffcU5r9zn71V2sC-eWEcYoHPBkKYL5yBXm6bIPBx3pW7EkwShQ4sGzpXOKrsC0",
+        "auth": "XXZIXzmf2EVQT3hqLpREsw"
+      }
+    },
+    {
+      "endpoint": "https://fcm.googleapis.com/fcm/send/fA2k89O0uMQ:APA91bEyAex1gIgJHECUCNcGLkBxbB2yn8T8XEMvKC3UJ7phViJ8PO0uyv_S0gBTZL5iu749ofk_siYIsKo1sFwtpuZtQM0SI11W6i2xcJrTqf7dl4Jjg6wzSzKhpa4bZDVAp2-OxSMy",
+      "expirationTime": null,
+      "keys": {
+        "p256dh": "BH8-XJOum0xv8piojEqTozd-JBkqSeqman2aKzwOV3xVHiLD9pH7_R08cMt-NwMSBlpoiGSH65Nb1Lz5MWTI_jI",
+        "auth": "jn02H7U31F1ccjs0XHHEQQ"
+      }
+    },
+    {
+      "endpoint": "https://fcm.googleapis.com/fcm/send/e5HQYeZ0jZM:APA91bFlFgN62Djk8Yh_hbij_R219-3wBOB8QkgtnA0nPdmurpp4n7wjpAZoMc0QQ1yoLn26pkujlSgZumhsoZlBsyB1r0oFXRkhJq28PA3iwkQy5xutgMLaJPfVcIqEUY_NYzCoHTVT",
+      "expirationTime": null,
+      "keys": {
+        "p256dh": "BKPDxzo1EpJWipvzI8VDBpPR7k4lB1zbGgmolqATB4WPzzqaDXIJQVEOEaT1rPm1hp0qXfgLbN_9alxQ6IBiofQ",
+        "auth": "L92ULZ2b-2prxZ7mD1NqFw"
+      }
+    },
+    {
+      "endpoint": "https://fcm.googleapis.com/fcm/send/e7tVhhjUOxY:APA91bEOVaZXtqrONwDT9TmIcdNAVhFc5nU49t5BOowVSIbeBnhdis6YWZVbn0flWhajLBMG-nrb3ldxL5beOUgWxW7XreYBJE48LxZEnd2Y1wBZuKqZz4wZLQSA2NtiZBrl9nq7VPBI",
+      "expirationTime": null,
+      "keys": {
+        "p256dh": "BAt5RGl3-eGdJwPBOeZehUMRRggPwAMhvZk-KL69sVQv9Ejom3zL7GERTt7FRP3n6xogyyUhpMMFmZNS0aBtsDc",
+        "auth": "cz5HGK55fwQPJAz-AjowJw"
+      }
+    },
+    {
+      "endpoint": "https://fcm.googleapis.com/fcm/send/fTbqzthGrHQ:APA91bERBkAN2aXKIkTUPhacQhVeUxgVp1hDvpdzmEf1ZMeD4g9WZerBWvoF3CnBpCmfhm9CnPUeokDblt0PV1Mb-jcQon8jK9fcslVFhkQmEXHOiAARDfaJAbgWPCRI93x-u82Q1uEi",
+      "expirationTime": null,
+      "keys": {
+        "p256dh": "BL8j9XIkyniQ_winyYBll1CocBvBS9QzcIg7ddNpXykqMm8nEYzWX3qcDlhL4asYuZF8BXX71FegV21azzFdsSQ",
+        "auth": "rukcN62lROUujQXZCNm9Eg"
+      }
+    },
+    {
+      "endpoint": "https://fcm.googleapis.com/fcm/send/cg3wPG4wP1w:APA91bGmm5Pj-PCj6c8r5xxgh4kPsSoky71PUkBwrAZzim0U_fI5qnSdhH4H5JuhI-GgkRh6ipWZwccX0RVFi3PsSNM2iDqQu6SbYuq2f4ppaq2ZyAmhsYoHF_ewaW8FQfY_oSWFA_xm",
+      "expirationTime": null,
+      "keys": {
+        "p256dh": "BPd76hEiclqlCYVHhLvqIA8uHFQaIglxZI46qdU6xN9DMsc-2YpM36twIFhp3fjf3Oh5hpbftrFnTWDOoW1g5Cg",
+        "auth": "XqlS94uFKBfY1EwSN-DZnw"
+      }
+    }
+  ],
+  "users": [
+    {
+      "id": 0,
+      "email": "alex@gmail.com",
+      "name": "alex",
+      "password": "12345"
+    },
+    {
+      "id": 1,
+      "email": "alex2@gmail.com",
+      "name": "alex2",
+      "password": "12345"
+    },
+    {
+      "email": "alex3@gmail.com",
+      "name": "alex",
+      "phone": "0949330477",
+      "password": "12345"
+    }
+  ]
+}
