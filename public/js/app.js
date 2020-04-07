@@ -7,7 +7,7 @@ if ("serviceWorker" in navigator) { //Свойство только-для-чт�
       console.log("Service worker registration failed:", err);
     });
 }
-
+/*
 navigator.serviceWorker.addEventListener("message", function (event) {
   var data = event.data;
   if (data.action === "navigate") {
@@ -15,7 +15,7 @@ navigator.serviceWorker.addEventListener("message", function (event) {
   } else if (data.action === "update-reservation") {
     updateReservationDisplay(data.reservation);
   }
-});
+});*/
 
 function setCookie(name, value, options = {}) {
 
