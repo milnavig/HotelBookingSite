@@ -49,7 +49,7 @@ function getCookie(name) {
 }
 
 if (getCookie("user") === undefined) {
-  window.location.href = "http://188.225.57.199:8443/login";
+  window.location.href = "http://for-thesis.space/login";
 }
 
 $("#leave").click(function(event) {

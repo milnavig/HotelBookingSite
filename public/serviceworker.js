@@ -250,7 +250,7 @@ self.addEventListener("push", function(event) {
         return self.registration.showNotification("Бронювання підтверджено", {
           body:
             "Бронювання "+reservation.arrivalDate+" було підтверджено.",
-          icon: "/img/event-rooftop.jpg",
+          icon: "/img/event-book.jpg",
           badge: "/img/icon-hotel.png",
           tag: "reservation-confirmation-"+reservation.id,
           actions: [
