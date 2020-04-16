@@ -4,47 +4,47 @@ importScripts("/js/vendor/progressive-ui-kitt/progressive-ui-kitt-sw-helper.js")
 var CACHE_NAME = "site-cache-v1";
 var CACHED_URLS_IMMUTABLE = [
   // Our HTML
-  "./index.html",
-  "./bookings.html",
-  "./login.html",
-  "./registration.html",
-  "./contacts.html",
-  "./manifest.json", // ???
+  "/index.html",
+  "/bookings.html",
+  "/login.html",
+  "/registration.html",
+  "/contacts.html",
+  "/manifest.json", // ???
   // Stylesheets
-  "./css/style.css",
+  "/css/style.css",
   "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css",
   "https://fonts.googleapis.com/css?family=Raleway&display=swap",
-  "./css/login-main.css",
-  "./css/login-util.css", // ?
+  "/css/login-main.css",
+  "/css/login-util.css", // ?
   // JavaScript
   "https://code.jquery.com/jquery-3.0.0.min.js",
-  "./js/app.js",
-  "./js/map-offline.js",
-  "./js/bookings.js",
-  "./js/auth.js",
-  "./js/map.js",
-  "./js/reservations-store.js",
+  "/js/app.js",
+  "/js/map-offline.js",
+  "/js/bookings.js",
+  "/js/auth.js",
+  "/js/map.js",
+  "/js/reservations-store.js",
   // Images
-  "./img/event-book.jpg",
-  "./img/logo-white-50px.png",
-  "./img/logo-white-80px.png",
-  "./img/logo-48x48.ico",
-  "./img/logo-192x192.png",
-  "./img/logo-512x512.png",
-  "./img/logo-white-25px.png",
-  "./img/switch.png",
-  "./img/icon-cal.png",
-  "./img/icon-confirm.png",
-  "./img/icon-hotel.png",
-  "./img/map.jpg",
-  "./js/vendor/progressive-ui-kitt/themes/flat.css",
-  "./js/vendor/progressive-ui-kitt/progressive-ui-kitt.js"
+  "/img/event-book.jpg",
+  "/img/logo-white-50px.png",
+  "/img/logo-white-80px.png",
+  "/img/logo-48x48.ico",
+  "/img/logo-192x192.png",
+  "/img/logo-512x512.png",
+  "/img/logo-white-25px.png",
+  "/img/switch.png",
+  "/img/icon-cal.png",
+  "/img/icon-confirm.png",
+  "/img/icon-hotel.png",
+  "/img/map.jpg",
+  "/js/vendor/progressive-ui-kitt/themes/flat.css",
+  "/js/vendor/progressive-ui-kitt/progressive-ui-kitt.js"
 ];
 
 var CACHED_URLS_MUTABLE = [
   // JSON
-  "./events.json",
-  "./reservations.json"
+  "/events.json",
+  "/reservations.json"
 ];
 
 var mapResources = "http://www.openlayers.org/api/OpenLayers.js";
