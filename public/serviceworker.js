@@ -32,6 +32,7 @@ var CACHED_URLS_IMMUTABLE = [
   "/img/logo-192x192.png",
   "/img/logo-512x512.png",
   "/img/logo-white-25px.png",
+  "/img/icon-50x50.png",
   "/img/switch.png",
   "/img/icon-cal.png",
   "/img/icon-confirm.png",
@@ -112,6 +113,12 @@ self.addEventListener("fetch", function(event) {
     event.respondWith(
       caches.match("/bookings.html").then(function(response) {
         return response || fetch("/bookings.html");
+      })
+    );
+  } else if (requestURL.pathname === "/contacts") {
+    event.respondWith(
+      caches.match("/contacts.html").then(function(response) {
+        return response || fetch("/contacts.html");
       })
     );
   } else if (requestURL.pathname === "/login") {

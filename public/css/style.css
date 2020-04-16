@@ -487,8 +487,6 @@ div.reservation-card.reservation-card--unconfirmed {
 
 /* Map */
 #mapdiv {
-    margin: 10%;
-    padding: 10%;
     width: 100%;
     height: 500px;
 }
