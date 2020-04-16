@@ -57,7 +57,7 @@ $("#leave").click(function(event) {
 });
 
 if (getCookie("user") === undefined || getCookie("user") === null || getCookie("user") === "") {
-  window.location.href = "http://localhost:8443/login";
+  window.location.href = "https://for-thesis.space/login";
 }
 
 $(document).ready(function() {
