@@ -5,7 +5,7 @@ $("#button").click(function(event) {
     if (data !== undefined) {
       console.log(data);
       document.cookie = "user=" + encodeURIComponent(data.email);
-      window.location.href = "http://for-thesis.space/";
+      window.location.href = "https://for-thesis.space/";
     } else {
         // variant
     }
@@ -19,7 +19,7 @@ $("#button-reg").click(function(event) {
   if ($("#email").val() && $("#name").val() && $("#phone").val() && $("#password").val()) {
     $.getJSON("/registration.json", {email: $("#email").val(), name: $("#name").val(), phone: $("#phone").val(), password: $("#password").val()}, function(data) {
       if (data !== null) {
-        window.location.href = "http://for-thesis.space/login";
+        window.location.href = "https://for-thesis.space/login";
       } else {
         // variant
       }

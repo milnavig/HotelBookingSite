@@ -7,7 +7,7 @@ if ("serviceWorker" in navigator) { //Свойство только-для-чт�
       console.log("Service worker registration failed:", err);
     });
 }
-/*
+
 navigator.serviceWorker.addEventListener("message", function (event) {
   var data = event.data;
   if (data.action === "navigate") {
@@ -15,7 +15,7 @@ navigator.serviceWorker.addEventListener("message", function (event) {
   } else if (data.action === "update-reservation") {
     updateReservationDisplay(data.reservation);
   }
-});*/
+});
 
 function setCookie(name, value, options = {}) {
 
@@ -48,10 +48,6 @@ function getCookie(name) {
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
-if (getCookie("user") === undefined) {
-  window.location.href = "http://for-thesis.space/login";
-}
-
 $("#leave").click(function(event) {
   //event.preventDefault();
   setCookie("user", "", {
@@ -59,6 +55,10 @@ $("#leave").click(function(event) {
   });
   indexedDB.deleteDatabase("site-reservations");
 });
+
+if (getCookie("user") === undefined || getCookie("user") === null || getCookie("user") === "") {
+  window.location.href = "http://localhost:8443/login";
+}
 
 $(document).ready(function() {
   // Fetch and render upcoming events in the hotel

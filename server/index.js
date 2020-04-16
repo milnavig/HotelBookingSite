@@ -33,6 +33,10 @@ app.get("/bookings", function(req, res) {
   res.sendFile("bookings.html", {root: "public"});
 });
 
+app.get("/contacts", function(req, res) {
+  res.sendFile("contacts.html", {root: "public"});
+});
+
 app.get("/reservations.json", function(req, res) {
   //res.json(reservations.get());
   res.json(reservations.getByUser(req.query["user"]));

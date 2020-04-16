@@ -1,7 +1,7 @@
 {
   "short_name": "BookHotel",
   "name": "Book Hotel",
-  "description": "Book your next stay, manage reservations, and explore hotels",
+  "description": "Забронюйте номер у гостиниці заздалегідь",
   "start_url": "/",
   "scope": "/",
   "display": "fullscreen",
@@ -17,7 +17,7 @@
       "sizes": "512x512"
     }
   ],
-  "theme_color": "#242424",
-  "background_color": "#242424",
+  "theme_color": "#274b69",
+  "background_color": "#274b69",
   "gcm_sender_id": "208984707982"
 }

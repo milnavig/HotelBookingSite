@@ -8,6 +8,7 @@ var CACHED_URLS_IMMUTABLE = [
   "/bookings.html",
   "/login.html",
   "/registration.html",
+  "/manifest.json", // ???
   // Stylesheets
   "/css/style.css",
   "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css",
@@ -25,6 +26,15 @@ var CACHED_URLS_IMMUTABLE = [
   "/img/event-book.jpg",
   "/img/logo-white-50px.png",
   "/img/logo-white-80px.png",
+  "/img/logo-48x48.ico",
+  "/img/logo-192x192.png",
+  "/img/logo-512x512.png",
+  "/img/logo-white-25px.png",
+  "/img/switch.png",
+  "/img/icon-cal.png",
+  "/img/icon-confirm.png",
+  "/img/icon-hotel.png",
+  "/img/map.jpg",
   "/js/vendor/progressive-ui-kitt/themes/flat.css",
   "/js/vendor/progressive-ui-kitt/progressive-ui-kitt.js"
 ];
@@ -35,8 +45,7 @@ var CACHED_URLS_MUTABLE = [
   "/reservations.json"
 ];
 
-var googleMapsAPIJS = "https://maps.googleapis.com/maps/api/js?key="+
-  "AIzaSyDm9jndhfbcWByQnrivoaWAEQA8jy3COdE&callback=initMap";
+var mapResources = "http://www.openlayers.org/api/OpenLayers.js";
 
 self.addEventListener("install", function(event) {
   console.log("Installed");
@@ -110,15 +119,15 @@ self.addEventListener("fetch", function(event) {
       })
     );
   // Handle requests for Google Maps JavaScript API file
-  } else if (requestURL.href === googleMapsAPIJS) {
-    /*event.respondWith(
+  } else if (requestURL.href === mapResources) {
+    event.respondWith(
       fetch(
-        googleMapsAPIJS+"&"+Date.now(),
+        mapResources,
         { mode: "no-cors", cache: "no-store" }
       ).catch(function() {
-        return caches.match("/js/offline-map.js");
+        return caches.match("/js/map-offline.js");
       })
-    );*/
+    );
   // Handle requests for events JSON file
   } else if (requestURL.pathname === "/events.json") {
     event.respondWith(
@@ -128,7 +137,7 @@ self.addEventListener("fetch", function(event) {
           return networkResponse;
         }).catch(function() {
           ProgressiveKITT.addAlert(
-          "Ви зараз offline."+
+          "Ви зараз offline. "+
           "Зміст цієї сторінки може бути застарілим."
           );
           return caches.match(event.request);
