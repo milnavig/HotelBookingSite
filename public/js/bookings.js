@@ -10,6 +10,12 @@ navigator.serviceWorker.addEventListener("message", function (event) {
     renderReservation(event.data.reservation);
   }
 });
+console.log("Hi");
+//updateInObjectStore("auth", "1", "alex@gmail.com");
+//addToObjectStore("auth", {status: "loggined", email: "alex@gmail.com"}).then(function(auth) {getAuth().then(function(auth) {console.log(auth);});});
+//addToObjectStore("auth", {status: "loggined", email: "alex@gmail.com"}).then(function(auth) {console.log(getAuth());});
+//addToObjectStore("auth", {status: "loggined", email: "alex@gmail.com"}).then(function(auth) {deleteAuth();});
+//getAuth().then(function(auth) {console.log(auth);});
 
 function getCookie(name) {
   let matches = document.cookie.match(new RegExp(

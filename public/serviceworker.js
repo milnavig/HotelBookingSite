@@ -31,8 +31,8 @@ var CACHED_URLS_IMMUTABLE = [
   "/img/logo-48x48.ico",
   "/img/logo-192x192.png",
   "/img/logo-512x512.png",
-  "/img/logo-white-25px.png",
   "/img/icon-50x50.png",
+  "/img/logo-white-25px.png",
   "/img/switch.png",
   "/img/icon-cal.png",
   "/img/icon-confirm.png",
@@ -44,11 +44,11 @@ var CACHED_URLS_IMMUTABLE = [
 
 var CACHED_URLS_MUTABLE = [
   // JSON
-  "/events.json",
-  "/reservations.json"
+  "./events.json",
+  "./reservations.json"
 ];
 
-var mapResources = "http://www.openlayers.org/api/OpenLayers.js";
+var mapResources = "https://www.openlayers.org/api/OpenLayers.js";
 
 self.addEventListener("install", function(event) {
   console.log("Installed");
@@ -189,7 +189,7 @@ self.addEventListener("fetch", function(event) {
 });
 
 var createReservationUrl = function(reservationDetails) {
-  var reservationUrl = new URL("https://for-thesis.space/make-reservation");
+  var reservationUrl = new URL("http://localhost:8443/make-reservation");
   Object.keys(reservationDetails).forEach(function(key) {
     reservationUrl.searchParams.append(key, reservationDetails[key]);
   });
@@ -296,9 +296,9 @@ self.addEventListener("notificationclick", function(event) {
     event.waitUntil(
       self.clients.matchAll().then(function(activeClients) {
         if (activeClients.length > 0) {
-          activeClients[0].navigate("https://for-thesis.space/bookings");
+          activeClients[0].navigate("http://localhost:8443/bookings");
         } else {
-          self.clients.openWindow("https://for-thesis.space/bookings");
+          self.clients.openWindow("http://localhost:8443/bookings");
         }
       })
     );

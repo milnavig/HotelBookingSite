@@ -4,8 +4,9 @@ $("#button").click(function(event) {
   $.getJSON("/users.json", {email: $("#email").val()}, function(data) {
     if (data !== undefined) {
       console.log(data);
-      document.cookie = "user=" + encodeURIComponent(data.email);
-      window.location.href = "https://for-thesis.space/";
+      //document.cookie = "user=" + encodeURIComponent(data.email);
+      addToObjectStore("auth", {status: "loggined", email: data.email}).then(function(auth) {window.location.href = "https://for-thesis.space/";});
+      
     } else {
         // variant
     }

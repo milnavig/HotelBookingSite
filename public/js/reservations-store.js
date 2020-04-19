@@ -1,6 +1,9 @@
 var DB_VERSION = 3;
 var DB_NAME = "site-reservations";
 
+//var DB_VERSION_AUTH = 3;
+//var DB_NAME_AUTH = "site-auth";
+
 if (navigator.storage && navigator.storage.persist) { // что-бы никогда не удаляло БД
   navigator.storage.persist().then(function(granted) {
     if (granted) {
@@ -24,6 +27,7 @@ var openDatabase = function() {
       var db = event.target.result;
       var upgradeTransaction = event.target.transaction;
       var reservationsStore;
+      var reservationsStore_Auth;
       if (!db.objectStoreNames.contains("reservations")) {
         reservationsStore = db.createObjectStore("reservations",
           { keyPath: "id" }
@@ -31,9 +35,21 @@ var openDatabase = function() {
       } else {
         reservationsStore = upgradeTransaction.objectStore("reservations");
       }
+        
+      if (!db.objectStoreNames.contains("auth")) { // !!!!!!!!!
+        reservationsStore_Auth = db.createObjectStore("auth",
+          { keyPath: "email" }
+        );
+      } else {
+        reservationsStore_Auth = upgradeTransaction.objectStore("auth");
+      }
 
       if (!reservationsStore.indexNames.contains("idx_status")) {
         reservationsStore.createIndex("idx_status", "status", { unique: false });
+      }
+        
+      if (!reservationsStore_Auth.indexNames.contains("idx_status")) { // !!!
+        reservationsStore_Auth.createIndex("idx_status", "status", { unique: false });
       }
     };
 
@@ -81,12 +97,13 @@ var updateInObjectStore = function(storeName, id, object) {
   });
 };
 
+/*
 function getCookie(name) {
   let matches = document.cookie.match(new RegExp(
     "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)"
   ));
   return matches ? decodeURIComponent(matches[1]) : undefined;
-}
+}*/
 
 var getReservations = function(indexName, indexValue) { 
   return new Promise(function(resolve) {
@@ -132,13 +149,62 @@ var getReservationsFromServer = function() {
   return new Promise(function(resolve) {
     if (self.$) {
       //$.getJSON("/reservations.json", resolve);
-      $.getJSON("/reservations.json", {user: getCookie("user")}, resolve);
+      getAuth().then(function(auth) {$.getJSON("/reservations.json", {user: auth}, resolve);});
+      
     } else if (self.fetch) {
-      fetch("/reservations.json", {user: getCookie("user")}).then(function(response) { // не уверен что можно добалять второй аргумент
-        return response.json();
-      }).then(function(reservations) {
-        resolve(reservations);
+      getAuth().then(function(auth) {
+        fetch("/reservations.json", {user: "alex@gmail.com"}).then(function(response) { // не уверен что можно добавлять второй аргумент fetch("/reservations.json", {user: getCookie("user")})
+          return response.json();
+        }).then(function(reservations) {
+          resolve(reservations);
+        });
       });
+      
     }
+  });
+};
+
+var getAuth = function() { 
+  return new Promise(function(resolve) {
+    openDatabase().then(function(db) {
+      var objectStore = openObjectStore(db, "auth");
+      var auths = [];
+      var cursor;
+      
+      cursor = objectStore.index("idx_status").openCursor("loggined");
+      cursor = objectStore.openCursor();
+      
+      cursor.onsuccess = function(event) {
+        var cursor = event.target.result;
+        if (cursor) {
+          auths.push(cursor.value.email);
+          cursor.continue();
+        } else {
+          if (auths.length > 0) {
+            resolve(auths[0]);
+          } else {
+            resolve("no_auth");
+          }
+        }
+      };
+    }).catch(function() {
+      console.log("Auth Error");
+    });
+  });
+};
+
+var deleteAuth = function() { 
+  return new Promise(function(resolve) {
+    openDatabase().then(function(db) {
+      db.transaction("auth", "readwrite")
+        .objectStore("auth")
+        .clear()
+        .onsuccess = function(event) {
+          console.log("Object store cleared");
+        };
+      
+    }).catch(function() {
+      console.log("Delete Auth Error");
+    });
   });
 };

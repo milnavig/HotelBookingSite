@@ -17,6 +17,13 @@ navigator.serviceWorker.addEventListener("message", function (event) {
   }
 });
 
+getAuth().then(function(auth) {
+  console.log(auth);
+  if (auth == "no_auth") {
+    window.location.href = "https://for-thesis.space/login";
+  }
+});
+/*
 function setCookie(name, value, options = {}) {
 
   options = {
@@ -47,19 +54,16 @@ function getCookie(name) {
   ));
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
-
+*/
 $("#leave").click(function(event) {
-  //event.preventDefault();
-  setCookie("user", "", {
-    "max-age": -1
-  });
+  //deleteAuth();
   indexedDB.deleteDatabase("site-reservations");
 });
-
+/*
 if (getCookie("user") === undefined || getCookie("user") === null || getCookie("user") === "") {
-  window.location.href = "https://for-thesis.space/login";
+  window.location.href = "http://localhost:8443/login";
 }
-
+*/
 $(document).ready(function() {
   // Fetch and render upcoming events in the hotel
   $.getJSON("/events.json", renderEvents);

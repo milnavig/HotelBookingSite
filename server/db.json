@@ -49,244 +49,16 @@
       "price": 603
     },
     {
-      "id": "61204202",
-      "user": "alex@gmail.com",
+      "id": "70768466",
+      "user": "undefined",
       "city": "Одеса",
       "arrivalDate": "5-го листопада 2022",
       "arrivalTime": "10:00",
       "nights": "3",
       "guests": "2",
       "status": "Підтверджено",
-      "bookedOn": "2020-04-06T00:00:20+03:00",
-      "price": 642
-    },
-    {
-      "id": "61204476",
-      "user": "alex@gmail.com",
-      "city": "Одеса",
-      "arrivalDate": "5-го листопада 2022",
-      "arrivalTime": "10:00",
-      "nights": "3",
-      "guests": "2",
-      "status": "Підтверджено",
-      "bookedOn": "2020-04-06T00:00:47+03:00",
-      "price": 693
-    },
-    {
-      "id": "61225805",
-      "user": "alex3@gmail.com",
-      "city": "Одеса",
-      "arrivalDate": "5-го листопада 2022",
-      "arrivalTime": "10:00",
-      "nights": "3",
-      "guests": "2",
-      "status": "Підтверджено",
-      "bookedOn": "2020-04-06T00:36:20+03:00",
-      "price": 603
-    },
-    {
-      "id": "61228459",
-      "user": "alex3@gmail.com",
-      "city": "Одеса",
-      "arrivalDate": "5-го листопада 2022",
-      "arrivalTime": "10:00",
-      "nights": "3",
-      "guests": "2",
-      "status": "Підтверджено",
-      "bookedOn": "2020-04-06T00:40:46+03:00",
-      "price": 600
-    },
-    {
-      "id": "62873778",
-      "user": "alex@gmail.com",
-      "city": "Одеса",
-      "arrivalDate": "5-го листопада 2022",
-      "arrivalTime": "10:00",
-      "nights": "4",
-      "guests": "3",
-      "status": "Підтверджено",
-      "bookedOn": "2020-04-07T22:22:58+03:00",
-      "price": 852
-    },
-    {
-      "id": "62875360",
-      "user": "alex2@gmail.com",
-      "city": "Одеса",
-      "arrivalDate": "5-го листопада 2022",
-      "arrivalTime": "10:00",
-      "nights": "3",
-      "guests": "2",
-      "status": "Підтверджено",
-      "bookedOn": "2020-04-07T22:25:36+03:00",
-      "price": 735
-    },
-    {
-      "id": "62876645",
-      "user": "alex2@gmail.com",
-      "city": "Київ",
-      "arrivalDate": "5-го листопада 2022",
-      "arrivalTime": "10:00",
-      "nights": "3",
-      "guests": "2",
-      "status": "Підтверджено",
-      "bookedOn": "2020-04-07T22:27:44+03:00",
-      "price": 735
-    },
-    {
-      "id": "62876959",
-      "user": "alex2@gmail.com",
-      "city": "Одеса",
-      "arrivalDate": "5-го листопада 2022",
-      "arrivalTime": "10:00",
-      "nights": "3",
-      "guests": "2",
-      "status": "Підтверджено",
-      "bookedOn": "2020-04-07T22:28:15+03:00",
-      "price": 726
-    },
-    {
-      "id": "62887875",
-      "user": "alex3@gmail.com",
-      "city": "Одеса",
-      "arrivalDate": "5-го листопада 2022",
-      "arrivalTime": "10:00",
-      "nights": "3",
-      "guests": "2",
-      "status": "Підтверджено",
-      "bookedOn": "2020-04-07T22:46:27+03:00",
-      "price": 720
-    },
-    {
-      "id": "62888551",
-      "user": "alex3@gmail.com",
-      "city": "Одеса",
-      "arrivalDate": "5-го листопада 2022",
-      "arrivalTime": "10:00",
-      "nights": "3",
-      "guests": "2",
-      "status": "Підтверджено",
-      "bookedOn": "2020-04-07T22:47:47+03:00",
-      "price": 696
-    },
-    {
-      "id": "62889979",
-      "user": "alex3@gmail.com",
-      "city": "Одеса",
-      "arrivalDate": "5-го листопада 2022",
-      "arrivalTime": "10:00",
-      "nights": "3",
-      "guests": "2",
-      "status": "Підтверджено",
-      "bookedOn": "2020-04-07T22:49:57+03:00",
-      "price": 630
-    },
-    {
-      "id": "62891638",
-      "user": "alex3@gmail.com",
-      "city": "Одеса",
-      "arrivalDate": "5-го листопада 2022",
-      "arrivalTime": "10:00",
-      "nights": "3",
-      "guests": "2",
-      "status": "Підтверджено",
-      "bookedOn": "2020-04-07T22:53:40+03:00",
-      "price": 738
-    },
-    {
-      "id": "62894746",
-      "user": "alex3@gmail.com",
-      "city": "Одеса",
-      "arrivalDate": "5-го листопада 2022",
-      "arrivalTime": "10:00",
-      "nights": "3",
-      "guests": "2",
-      "status": "Підтверджено",
-      "bookedOn": "2020-04-07T22:59:46+03:00",
-      "price": 699
-    },
-    {
-      "id": "62896054",
-      "user": "alex3@gmail.com",
-      "city": "Одеса",
-      "arrivalDate": "5-го листопада 2022",
-      "arrivalTime": "10:00",
-      "nights": "3",
-      "guests": "2",
-      "status": "Підтверджено",
-      "bookedOn": "2020-04-07T23:00:05+03:00",
-      "price": 639
-    },
-    {
-      "id": "62896338",
-      "user": "alex3@gmail.com",
-      "city": "Одеса",
-      "arrivalDate": "5-го листопада 2022",
-      "arrivalTime": "10:00",
-      "nights": "3",
-      "guests": "2",
-      "status": "Підтверджено",
-      "bookedOn": "2020-04-07T23:00:33+03:00",
-      "price": 639
-    },
-    {
-      "id": "62896942",
-      "user": "alex3@gmail.com",
-      "city": "Одеса",
-      "arrivalDate": "5-го листопада 2022",
-      "arrivalTime": "10:00",
-      "nights": "3",
-      "guests": "2",
-      "status": "Підтверджено",
-      "bookedOn": "2020-04-07T23:01:34+03:00",
-      "price": 741
-    },
-    {
-      "id": "62898538",
-      "user": "alex3@gmail.com",
-      "city": "Одеса",
-      "arrivalDate": "5-го листопада 2022",
-      "arrivalTime": "10:00",
-      "nights": "3",
-      "guests": "2",
-      "status": "Підтверджено",
-      "bookedOn": "2020-04-07T23:04:36+03:00",
-      "price": 729
-    },
-    {
-      "id": "62899557",
-      "user": "alex3@gmail.com",
-      "city": "Одеса",
-      "arrivalDate": "5-го листопада 2022",
-      "arrivalTime": "10:00",
-      "nights": "3",
-      "guests": "2",
-      "status": "Підтверджено",
-      "bookedOn": "2020-04-07T23:05:55+03:00",
-      "price": 633
-    },
-    {
-      "id": "62902098",
-      "user": "alex3@gmail.com",
-      "city": "Одеса",
-      "arrivalDate": "5-го листопада 2022",
-      "arrivalTime": "10:00",
-      "nights": "3",
-      "guests": "2",
-      "status": "Підтверджено",
-      "bookedOn": "2020-04-07T23:10:09+03:00",
-      "price": 702
-    },
-    {
-      "id": "69905161",
-      "user": "alex2@gmail.com",
-      "city": "Одеса",
-      "arrivalDate": "5-го листопада 2022",
-      "arrivalTime": "10:00",
-      "nights": "3",
-      "guests": "2",
-      "status": "Підтверджено",
-      "bookedOn": "2020-04-16T01:47:00+03:00",
-      "price": 609
+      "bookedOn": "2020-04-17T01:40:46+03:00",
+      "price": 717
     }
   ],
   "events": [
@@ -446,6 +218,54 @@
       "keys": {
         "p256dh": "BIzQhKFbERymEeORjWjMgL4pP0_bW5_SJPA8Nyb97xWZc795k7Eehy4jMgT6H7ODwFEUpCcJ-Z8MejmXbYQhn48",
         "auth": "EBmlKuNy96aLGvXXb9QImw"
+      }
+    },
+    {
+      "endpoint": "https://fcm.googleapis.com/fcm/send/cS76qsAo6EY:APA91bEeWhGdploCtPByQiUHc58_qZAAoHmrnYhxIYLK_NCykrXntAXd7eEL83kH8hBqhCLxIoi0VFDTq7XRxvlZhYOR7M295FTkqcIWX_bUhgljYiUdCFqguX50Wf5HFjWCYOqkfzEh",
+      "expirationTime": null,
+      "keys": {
+        "p256dh": "BPlTbOKiF2cdm5-pwKnUblqnNp1KjAiT3jK-Y_uaaGNOVXlyI6jTOmQJ2NCK7MiQhnzELjyHeDS616osLVx1S_U",
+        "auth": "6FVodOjh-DwSPkHsDIU_Qw"
+      }
+    },
+    {
+      "endpoint": "https://fcm.googleapis.com/fcm/send/dftACK53Y9Q:APA91bFrTS4JcNuxscGXz2k6drfZyl8BZ6TS-VIDpWEqc5ITwnASVK1-7jmo_5S9HFwDDEc-DVnJQxp4lNIFYfur7BjNgiadev9hOl8-Zzlb4r0KMzWK7yUx4cyIbYbdAbMO7nfrgJMJ",
+      "expirationTime": null,
+      "keys": {
+        "p256dh": "BOavYHw-VzGSH8E70kNnFciGgFP_S1YkvhhWao10EgW9lfLysZfTLs5An7yoaW9K2HqrKLaSmdj0b2DC_zKqyT0",
+        "auth": "g9t3Cvy0YwFptIZ1fy5XKA"
+      }
+    },
+    {
+      "endpoint": "https://fcm.googleapis.com/fcm/send/cPMYgO9qnXI:APA91bGcmR1FlGizhDPjy-VzaZTbUbxWGvV3g7H3M-KPNUshewlC5Zl3w1pe2uPb49SK2YmCSJh6Qj7UsZBdV5wjjsUDf-gc3jWuWxAlIJt6Gv77KQeDIUWXIf7W40VoGMiFQKKQQXAu",
+      "expirationTime": null,
+      "keys": {
+        "p256dh": "BIBOKMKRXfONyTkfgftcSPfrvtR-gnElxuXgM4hYKSIlcXYMl4PlLPXwT5ZhCels2axXTqlgxHxSKqYFB-p02yE",
+        "auth": "zZdaPDV0IZuKvaVAdJcGCA"
+      }
+    },
+    {
+      "endpoint": "https://fcm.googleapis.com/fcm/send/c4gtBZytgKI:APA91bF0WAk2JpIgYD9p_KGEXJOi22MTQtGX2mGUZqb6EylnH4ffTJM5j7sGXhwDiP1ySCzRxLfRAoDfbesZMLRHlWmlihiibs9FybUyY6-N_3T5OdrRjr0HdYwyFGlaaMXPPDsaLSm9",
+      "expirationTime": null,
+      "keys": {
+        "p256dh": "BJiDg_h-UGLSCijLuWM1vUjemG6Vsboht39rO9mQPDRx6vElIwvEDKPZRrcASN74OXV96QeeJej3jnDoUr7BLBk",
+        "auth": "v1rOEyN6x3YDQkV7yRLUNQ"
+      }
+    },
+    {
+      "endpoint": "https://fcm.googleapis.com/fcm/send/cfl8DXGxbek:APA91bFoJ5l4db0k2WHtrgyvFkD6aW3DhO32hOKOyHCU8BB6c911K-Omt-qh8ZNij2nnqu94vIvmCg-BY8vWukZWm0WJlFdlEtqoAMXM5qpw78KwoZtuc8uKhIbHDo-_kJSGHWHS-Rz7",
+      "expirationTime": null,
+      "keys": {
+        "p256dh": "BC0L_XFExdgwylYMdvItTsw5Vyt57XMJxaUTz6xaOmoCOLpZSvYK0p0t0fNu2lEBWI7pDyngHU0HafGsT5AhHf0",
+        "auth": "9ZD8bLOxEc4dzAhK3_bDfA"
+      }
+    },
+    {
+      "endpoint": "https://fcm.googleapis.com/fcm/send/fPuWfA4Dvz0:APA91bHM1zDoNGJwo_vZyveyenSTdrwjuJeAtr6brOlT112WOxlqSJ9YloMfXdHwHRO4jC1uyYjVrGZr9rtqWZQLWPncHJ8zCjfSWGzTuTyFuaBYJyYMaTdUEvm7DcQCrPpJpgmK7CHv",
+      "expirationTime": null,
+      "keys": {
+        "p256dh": "BDBCQh1fcgO0S5kxSPIAN-IGWSkVMzRhys2WqhxVyYC0Izi5UbImdehR7Hxs4D2SysL_Y4QmRqSf-7W3NqAnmIQ",
+        "auth": "TAgsFTXNd9zNJVs3Gcj6UQ"
       }
     }
   ],
