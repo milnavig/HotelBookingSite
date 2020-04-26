@@ -1,9 +1,6 @@
 var DB_VERSION = 3;
 var DB_NAME = "site-reservations";
 
-//var DB_VERSION_AUTH = 3;
-//var DB_NAME_AUTH = "site-auth";
-
 if (navigator.storage && navigator.storage.persist) { // что-бы никогда не удаляло БД
   navigator.storage.persist().then(function(granted) {
     if (granted) {
@@ -132,6 +129,9 @@ var getReservations = function(indexName, indexValue) {
                   objectStore.add(reservations[i]);
                 }
                 resolve(reservations);
+              });
+              caches.open("site-cache-v1").then(function(cache) {
+                cache.put("/reservations.json", new Response(reservations));
               });
             });
           }

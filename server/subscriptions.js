@@ -37,7 +37,6 @@ var add = function(subscription) {
 var notify = function(pushPayload) {
   var reservation = pushPayload["reservation"];
   var user = reservation["user"];
-  //console.log(user);
 
   pushPayload = JSON.stringify(pushPayload);
   webpush.setGCMAPIKey(pushKeys.GCMAPIKey);
@@ -48,14 +47,11 @@ var notify = function(pushPayload) {
   );
 
   var subscriptions = db.get("subscriptions").filter({ user: user }).value();
-  //console.log(subscriptions);
   subscriptions.forEach(function(subscription) {
     delete subscription["user"];
-    //console.log(subscription);
     webpush
       .sendNotification(subscription, pushPayload)
       .then(function() {
-        //console.log(res);
         console.log("Notification sent");
       })
       .catch(function() {

@@ -44,8 +44,7 @@ var CACHED_URLS_IMMUTABLE = [
 
 var CACHED_URLS_MUTABLE = [
   // JSON
-  "./events.json",
-  "./reservations.json"
+  "/events.json"
 ];
 
 var mapResources = "https://www.openlayers.org/api/OpenLayers.js";
@@ -127,6 +126,12 @@ self.addEventListener("fetch", function(event) {
         return response || fetch("/login.html");
       })
     );
+  } else if (requestURL.pathname === "/registration") {
+    event.respondWith(
+      caches.match("/registration.html").then(function(response) {
+        return response || fetch("/registration.html");
+      })
+    );
   // Handle requests for Google Maps JavaScript API file
   } else if (requestURL.href === mapResources) {
     event.respondWith(
@@ -198,7 +203,9 @@ var createReservationUrl = function(reservationDetails) {
 };
 
 var postReservationDetails = function(reservation) {
+  console.log("Ziggga2");
   self.clients.matchAll({ includeUncontrolled: true }).then(function(clients) {
+    console.log("Ziggga");
     clients.forEach(function(client) {
       client.postMessage(
         {action: "update-reservation", reservation: reservation}
@@ -220,6 +227,7 @@ var syncReservations = function() { // переделать
             newReservation.id,
             newReservation
           ).then(function() {
+            console.log(newReservation);
             postReservationDetails(newReservation);
           });
         });
@@ -252,6 +260,25 @@ self.addEventListener("message", function (event) {
         }
       });
     });
+  } else if (data.action === "add-booking-to-cache") { // тест что будет если менять кеш
+    caches.match("/reservations.json").then(function(response) {
+      /*
+      var res = response;
+      res.push(event.data);
+      var jsonStr = JSON.stringify(res);
+      caches.put("/reservations.json", jsonStr);
+      caches.match("/reservations.json").then(function(response) {
+        clients.forEach(function(client) {
+          client.postMessage({action: "updated-cache", bookings: response});
+        });
+      });*/
+    });        
+  } else if (data.action === "leave-account") {
+    self.clients.matchAll().then(function(clients) {
+      clients.forEach(function(client) {
+        client.postMessage({action: "nav-to-sign-in", url: "/login"});
+      });
+    });  
   }
 });
 
@@ -273,7 +300,7 @@ self.addEventListener("push", function(event) {
           tag: "reservation-confirmation-"+reservation.id,
           actions: [
             {
-              action: "details",
+              action: "information",
               title: "Показати бронювання",
               icon: "/img/icon-cal.png"
             }, {
@@ -283,7 +310,7 @@ self.addEventListener("push", function(event) {
             },
           ],
           vibrate:
-            [500,110,500]
+            [400,100,300]
         });
       })
     );
@@ -292,7 +319,7 @@ self.addEventListener("push", function(event) {
 
 self.addEventListener("notificationclick", function(event) {
   event.notification.close();
-  if (event.action === "details") {
+  if (event.action === "information") {
     event.waitUntil(
       self.clients.matchAll().then(function(activeClients) {
         if (activeClients.length > 0) {

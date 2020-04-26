@@ -10,8 +10,8 @@ if ("serviceWorker" in navigator) { //Свойство только-для-чт�
 
 navigator.serviceWorker.addEventListener("message", function (event) {
   var data = event.data;
-  if (data.action === "navigate") {
-    window.location.href = data.url; // Ещё не готово
+  if (data.action === "nav-to-sign-in") {
+    window.location.href = data.url;
   } else if (data.action === "update-reservation") {
     updateReservationDisplay(data.reservation);
   }
@@ -23,60 +23,21 @@ getAuth().then(function(auth) {
     window.location.href = "https://for-thesis.space/login";
   }
 });
-/*
-function setCookie(name, value, options = {}) {
 
-  options = {
-    path: "/",
-    // при необходимости добавьте другие значения по умолчанию
-  };
-
-  if (options.expires instanceof Date) {
-    options.expires = options.expires.toUTCString();
-  }
-
-  let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
-
-  for (let optionKey in options) {
-    updatedCookie += "; " + optionKey;
-    let optionValue = options[optionKey];
-    if (optionValue !== true) {
-      updatedCookie += "=" + optionValue;
-    }
-  }
-
-  document.cookie = updatedCookie;
-}
-
-function getCookie(name) {
-  let matches = document.cookie.match(new RegExp(
-    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)"
-  ));
-  return matches ? decodeURIComponent(matches[1]) : undefined;
-}
-*/
 $("#leave").click(function(event) {
   //deleteAuth();
   indexedDB.deleteDatabase("site-reservations");
+  if (navigator.serviceWorker.controller) {
+    navigator.serviceWorker.controller.postMessage({action: "leave-account"});
+  }
 });
-/*
-if (getCookie("user") === undefined || getCookie("user") === null || getCookie("user") === "") {
-  window.location.href = "http://localhost:8443/login";
-}
-*/
+
 $(document).ready(function() {
   // Fetch and render upcoming events in the hotel
   $.getJSON("/events.json", renderEvents);
 });
 
-
-/* ************************************************************ */
-/* The code below this point is used to render to the DOM. It   */
-/* completely ignores common sense principles as a trade off    */
-/* for readability.                                             */
-/* You can ignore it, or you can send angry tweets about it to  */
-/* @TalAter                                                     */
-/* ************************************************************ */
+// RENDER
 
 var renderEvents = function(data) {
   data.forEach(function(event) {
@@ -90,3 +51,48 @@ var renderEvents = function(data) {
     ).insertBefore("#events-container div.calendar-link-container");
   });
 };
+
+navigator.getBattery().then(function(battery) {
+  function updateAllBatteryInfo(){
+    updateChargeInfo();
+    updateLevelInfo();
+    updateChargingInfo();
+    updateDischargingInfo();
+  }
+  updateAllBatteryInfo();
+
+  battery.addEventListener("chargingchange", function(){
+    updateChargeInfo();
+  });
+  function updateChargeInfo(){
+    console.log("Battery charging? "
+                + (battery.charging ? "Yes" : "No"));
+  }
+
+  battery.addEventListener("levelchange", function(){
+    updateLevelInfo();
+  });
+  function updateLevelInfo(){
+    var now = new Date();
+    var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+    console.log("Battery level: "
+                + battery.level * 100 + "% " + time);
+  }
+
+  battery.addEventListener("chargingtimechange", function(){
+    updateChargingInfo();
+  });
+  function updateChargingInfo(){
+    console.log("Battery charging time: "
+                 + battery.chargingTime + " seconds");
+  }
+
+  battery.addEventListener("dischargingtimechange", function(){
+    updateDischargingInfo();
+  });
+  function updateDischargingInfo(){
+    console.log("Battery discharging time: "
+                 + battery.dischargingTime + " seconds");
+  }
+
+});

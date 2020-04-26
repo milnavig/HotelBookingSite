@@ -1,8 +1,9 @@
+/*
 navigator.serviceWorker.ready.then(function(registration) { // Смотрим список тегов синхронизации
   registration.sync.getTags().then(function(tags) {
     console.log(tags);
   });
-});
+});*/
 
 navigator.serviceWorker.addEventListener("message", function (event) {
   if (event.data.action === "update-list") {
@@ -10,19 +11,12 @@ navigator.serviceWorker.addEventListener("message", function (event) {
     renderReservation(event.data.reservation);
   }
 });
-console.log("Hi");
+
 //updateInObjectStore("auth", "1", "alex@gmail.com");
 //addToObjectStore("auth", {status: "loggined", email: "alex@gmail.com"}).then(function(auth) {getAuth().then(function(auth) {console.log(auth);});});
 //addToObjectStore("auth", {status: "loggined", email: "alex@gmail.com"}).then(function(auth) {console.log(getAuth());});
 //addToObjectStore("auth", {status: "loggined", email: "alex@gmail.com"}).then(function(auth) {deleteAuth();});
 //getAuth().then(function(auth) {console.log(auth);});
-
-function getCookie(name) {
-  let matches = document.cookie.match(new RegExp(
-    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)"
-  ));
-  return matches ? decodeURIComponent(matches[1]) : undefined;
-}
 
 $(document).ready(function() {
   // Fetch and render user reservations
@@ -40,13 +34,12 @@ $(document).ready(function() {
     if (!city || !arrivalDate || !arrivalTime || !nights || !guests) {
       return false;
     }
-    
-    addReservation(id, getCookie("user"), arrivalDate, arrivalTime, nights, guests, city);
+    getAuth().then(function(auth) {addReservation(id, auth, arrivalDate, arrivalTime, nights, guests, city);});
     return false;
   });
 
   // Periodically check for unconfirmed bookings
-  setInterval(checkUnconfirmedReservations, 5000); // возможно можно убрать, так как есть PostMessage который кинет ивент когда обновится
+  setInterval(checkUnconfirmedReservations, 4000); // возможно можно убрать, так как есть PostMessage который кинет ивент когда обновится (не можно)
 });
 
 // Fetches reservations from server and renders them to the page
@@ -89,25 +82,18 @@ var subscribeUserToNotifications = function() {
       navigator.serviceWorker.ready.then(function(registration) {
         return registration.pushManager.subscribe(subscribeOptions);
       }).then(function(subscription) {
-        //console.log(JSON.stringify(subscription));
-        //var edited_subscription = subscription.push({"user": getCookie("user")});
-        //console.log("Hi");
-        console.log(subscription);
-        var json_subscription = JSON.stringify(subscription);
-        //json_subscription["user"] = getCookie("user");
-        //var new_subscription = {subscription1: "test"};
-        
-        var subscription_json = subscription.toJSON();
-        subscription_json["user"] = getCookie("user");
-        console.log(subscription_json);
-        var fetchOptions = {
-          method: "post",
-          headers: new Headers({
-            "Content-Type": "application/json"
-          }),
-          body: JSON.stringify(subscription_json)
-        };
-        return fetch("/add-subscription", fetchOptions);
+        getAuth().then(function(auth) {
+          var subscription_json = subscription.toJSON();
+          subscription_json["user"] = auth;
+          var fetchOptions = {
+            method: "post",
+            headers: new Headers({
+              "Content-Type": "application/json"
+            }),
+            body: JSON.stringify(subscription_json)
+          };
+          return fetch("/add-subscription", fetchOptions);
+        });
       });
     }
   });
@@ -125,6 +111,20 @@ var offerNotification = function() {
   }
 };
 
+var notifyAboutBooking = function() {
+  navigator.serviceWorker.ready.then(function(registration) {
+    /*
+    registration.showNotification("Ваше бронювання отримано", {
+      body:
+        "Дякуємо за користування нашим сервісом.\n"+
+        "Ви отримаєте сповіщення, як тільки бронювання буде оброблене.",
+      icon: "/img/event-book.jpg",
+      badge: "/img/icon-hotel.png",
+      tag: "new-booking"
+    });*/
+  });
+};
+
 // Adds a reservation as pending to the DOM, and try to contact server to book it.
 var addReservation = function(id, user, arrivalDate, arrivalTime, nights, guests, city) {
   var reservationDetails = {
@@ -139,6 +139,10 @@ var addReservation = function(id, user, arrivalDate, arrivalTime, nights, guests
   };
   addToObjectStore("reservations", reservationDetails);
   renderReservation(reservationDetails);
+  /*
+  if ("serviceWorker" in navigator && navigator.serviceWorker.controller) { // Test
+    navigator.serviceWorker.controller.postMessage({action: "add-booking-to-cache", reservation: reservationDetails});
+  }*/
   //console.log(navigator.serviceWorker.controller);
   if ("serviceWorker" in navigator && navigator.serviceWorker.controller) {
     navigator.serviceWorker.controller.postMessage({action: "new-reservation", reservation: reservationDetails});
@@ -150,9 +154,11 @@ var addReservation = function(id, user, arrivalDate, arrivalTime, nights, guests
   } else {
     $.getJSON("/make-reservation", reservationDetails, function(data) {
       updateReservationDisplay(data);
+      updateInObjectStore("reservations", data.id, data); // добавил
     });
   }
   offerNotification();
+  notifyAboutBooking();
 };
 
 
@@ -216,6 +222,8 @@ var renderReservation = function(reservation) {
 };
 
 var updateReservationDisplay = function(reservation) {
+  console.log(reservation.status);
+  console.log(reservation);
   var reservationNode = $("#reservation-" + reservation.id);
   $(".reservation-bookedOn", reservationNode).text(reservation.bookedOn);
   $(".reservation-price strong", reservationNode).text(reservation.price+".99" + " ₴");
@@ -242,7 +250,7 @@ $("#offer-notification a").click(function(event) {
   subscribeUserToNotifications();
 });
 
-$(document).ready(function() { //это тоже
+$(document).ready(function() {
   // Prepopulate reservation form from querystring and create reservation
   var url = new URL(window.location); //The window.location object can be used to get the current page address (URL)
   var params = url.searchParams; //https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
