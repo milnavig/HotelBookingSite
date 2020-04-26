@@ -194,7 +194,7 @@ self.addEventListener("fetch", function(event) {
 });
 
 var createReservationUrl = function(reservationDetails) {
-  var reservationUrl = new URL("http://localhost:8443/make-reservation");
+  var reservationUrl = new URL("https://for-thesis.space/make-reservation");
   Object.keys(reservationDetails).forEach(function(key) {
     reservationUrl.searchParams.append(key, reservationDetails[key]);
   });
@@ -323,9 +323,9 @@ self.addEventListener("notificationclick", function(event) {
     event.waitUntil(
       self.clients.matchAll().then(function(activeClients) {
         if (activeClients.length > 0) {
-          activeClients[0].navigate("http://localhost:8443/bookings");
+          activeClients[0].navigate("https://for-thesis.space/bookings");
         } else {
-          self.clients.openWindow("http://localhost:8443/bookings");
+          self.clients.openWindow("https://for-thesis.space/bookings");
         }
       })
     );
