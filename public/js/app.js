@@ -77,6 +77,8 @@ navigator.getBattery().then(function(battery) {
     var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
     console.log("Battery level: "
                 + battery.level * 100 + "% " + time);
+    $("#battery-info").prepend("<p>Battery level: "
+                + battery.level * 100 + "% " + time + "</p>");
   }
 
   battery.addEventListener("chargingtimechange", function(){
