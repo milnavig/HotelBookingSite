@@ -83,6 +83,7 @@ var updateInObjectStore = function(storeName, id, object) {
             reject("Reservation not found in object store");
           }
           if (cursor.value.id === id) {
+            console.log("I'm in database");
             cursor.update(object).onsuccess = resolve;
             return;
           }
