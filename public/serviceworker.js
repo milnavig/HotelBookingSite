@@ -9,11 +9,14 @@ var CACHED_URLS_IMMUTABLE = [
   "/login.html",
   "/registration.html",
   "/contacts.html",
-  "/manifest.json", // ???
+  "/news.html",
+  "/manifest.json",
   // Stylesheets
   "/css/style.css",
   "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css",
   "https://fonts.googleapis.com/css?family=Raleway&display=swap",
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0",
   "/css/login-main.css",
   "/css/login-util.css", // ?
   // JavaScript
@@ -26,6 +29,7 @@ var CACHED_URLS_IMMUTABLE = [
   "/js/reservations-store.js",
   // Images
   "/img/event-book.jpg",
+  "/img/event-grass.jpg",
   "/img/logo-white-50px.png",
   "/img/logo-white-80px.png",
   "/img/logo-48x48.ico",
@@ -132,6 +136,12 @@ self.addEventListener("fetch", function(event) {
         return response || fetch("/registration.html");
       })
     );
+  } else if (requestURL.pathname.startsWith("/news/")) {
+    event.respondWith(
+      caches.match("/news.html").then(function(response) {
+        return response || fetch("/news.html");
+      })
+    );
   // Handle requests for Google Maps JavaScript API file
   } else if (requestURL.href === mapResources) {
     event.respondWith(
@@ -155,6 +165,36 @@ self.addEventListener("fetch", function(event) {
           "Зміст цієї сторінки може бути застарілим."
           );
           return caches.match(event.request);
+        });
+      })
+    );
+  } else if (requestURL.pathname === "/get-news") {
+    event.respondWith(
+      caches.open(CACHE_NAME).then(function(cache) {
+        return fetch(event.request).then(function(networkResponse) {
+          return networkResponse;
+        }).catch(function() {
+          var url = new URL(event.request.url);
+          var params = url.searchParams;
+          var value = params.get("id");
+          
+          return caches.match("events.json").then(function(response) {
+            return response.json().then(function(data) {
+              var myResponse;
+              data.forEach(function(item) {
+                if (item.id === value) {
+                  console.log("Res" + item.id);
+                  var data = item;
+                  var blob = new Blob([JSON.stringify(data, null, 2)], {type : "application/json"});
+
+                  var init = { "status" : 200 , "statusText" : "Success!" };
+                  myResponse = new Response(blob, init); 
+                  data = JSON.stringify(data, null, 2);
+                }
+              });
+              return myResponse;
+            });
+          });
         });
       })
     );
@@ -194,7 +234,7 @@ self.addEventListener("fetch", function(event) {
 });
 
 var createReservationUrl = function(reservationDetails) {
-  var reservationUrl = new URL("https://for-thesis.space/make-reservation");
+  var reservationUrl = new URL("http://localhost:8443/make-reservation");
   Object.keys(reservationDetails).forEach(function(key) {
     reservationUrl.searchParams.append(key, reservationDetails[key]);
   });
@@ -203,9 +243,7 @@ var createReservationUrl = function(reservationDetails) {
 };
 
 var postReservationDetails = function(reservation) {
-  console.log("Ziggga2");
   self.clients.matchAll({ includeUncontrolled: true }).then(function(clients) {
-    console.log("Ziggga");
     clients.forEach(function(client) {
       client.postMessage(
         {action: "update-reservation", reservation: reservation}
@@ -239,6 +277,14 @@ var syncReservations = function() { // переделать
 self.addEventListener("sync", function(event) {
   if (event.tag === "sync-reservations") {
     event.waitUntil(syncReservations());
+  } else if (event.tag.startsWith("deletion-")) {
+    var id = event.tag.split("-")[1];
+    console.log(id);
+    event.waitUntil(
+      fetch("/remove-bookings?id="+id).then(function(response) {
+        return deleteBooking(id);
+      })
+    );
   }
 });
 
@@ -323,9 +369,9 @@ self.addEventListener("notificationclick", function(event) {
     event.waitUntil(
       self.clients.matchAll().then(function(activeClients) {
         if (activeClients.length > 0) {
-          activeClients[0].navigate("https://for-thesis.space/bookings");
+          activeClients[0].navigate("http://localhost:8443/bookings");
         } else {
-          self.clients.openWindow("https://for-thesis.space/bookings");
+          self.clients.openWindow("http://localhost:8443/bookings");
         }
       })
     );

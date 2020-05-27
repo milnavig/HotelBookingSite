@@ -37,6 +37,15 @@ app.get("/contacts", function(req, res) {
   res.sendFile("contacts.html", {root: "public"});
 });
 
+app.get("/news/:newsID", function(req, res) {
+  res.sendFile("news.html", {root: "public"});
+});
+
+app.get("/get-news", function(req, res) {
+  //console.log(events.getByID(req.query.id));
+  res.json(events.getByID(req.query.id));
+});
+
 app.get("/reservations.json", function(req, res) {
   //res.json(reservations.get());
   res.json(reservations.getByUser(req.query["user"]));
@@ -82,6 +91,13 @@ app.get("/make-reservation", function(req, res) {
   }, 5000);
 
   res.json(reservationStatus);
+});
+
+app.get("/remove-bookings", function(req, res) {
+  var id = req.query["id"];
+  var resDel = reservations.deleteBooking(id);
+
+  res.json(resDel);
 });
 
 app.post("/add-subscription", function(req, res) {

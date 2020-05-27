@@ -16,6 +16,7 @@
     "addToObjectStore": false,
     "getAuth": false,
     "deleteAuth": false,
+    "deleteBooking": false,
     "ProgressiveKITT": false
   }
 

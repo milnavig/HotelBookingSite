@@ -102,7 +102,10 @@ function getCookie(name) {
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }*/
 
-var getReservations = function(indexName, indexValue) { 
+var getReservations = function(indexName, indexValue) {
+  var now = new Date();
+  var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + ":" + now.getMilliseconds();
+  console.log("Початок отримання з БД: " + time);
   return new Promise(function(resolve) {
     openDatabase().then(function(db) {
       var objectStore = openObjectStore(db, "reservations");
@@ -119,18 +122,28 @@ var getReservations = function(indexName, indexValue) {
           reservations.push(cursor.value);
           cursor.continue();
         } else {
+          var now = new Date();
+          var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + ":" + now.getMilliseconds();
+          console.log("Кінець отримання з БД: " + time);
+          console.log(reservations.length);
           if (reservations.length > 0) {
             resolve(reservations);
           } else {
             getReservationsFromServer().then(function(reservations) {
+              var now = new Date();
+              var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + ":" + now.getMilliseconds();
+              console.log("Початок запису у БД: " + time);
               openDatabase().then(function(db) {
                 var objectStore = openObjectStore(db, "reservations", "readwrite");
                 for (var i = 0; i < reservations.length; i++) {
                   objectStore.add(reservations[i]);
                 }
+                var now = new Date();
+                var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + ":" + now.getMilliseconds();
+                console.log("Кінець запису у БД: " + time);
                 resolve(reservations);
               });
-              caches.open("site-cache-v1").then(function(cache) {
+              caches.open("site-cache-v1").then(function(cache) { // зачем?
                 cache.put("/reservations.json", new Response(reservations));
               });
             });
@@ -205,6 +218,28 @@ var deleteAuth = function() {
       
     }).catch(function() {
       console.log("Delete Auth Error");
+    });
+  });
+};
+
+var deleteBooking = function(id) { 
+  return new Promise(function(resolve, reject) {
+    openDatabase().then(function(db) {
+      db.transaction("reservations", "readwrite")
+        .objectStore("reservations")
+        .openCursor().onsuccess = function(event) {
+          var cursor = event.target.result;
+          if (!cursor) {
+            reject("Reservation not found in object store");
+          }
+          if (cursor.value.id === id) {
+            cursor.delete().onsuccess = resolve;
+            return;
+          }
+          cursor.continue();
+        };
+    }).catch(function(errorMessage) {
+      reject(errorMessage);
     });
   });
 };

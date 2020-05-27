@@ -2,39 +2,48 @@ var moment = require("moment");
 var _ = require("lodash");
 
 const eventFixtures = [
-  {
-    "title": "New Year's Eve Party",
-    "description": "The Gotham Imperial invites you to celebrate our annual New Year's Eve party.",
-    "img": "/img/event-rooftop.jpg",
-    "date": "12/31"
-  },
-  {
-    "title": "Rooftop Party",
-    "description": "Come celebrate the re-opening of our rooftop bar, following last year's incident.",
-    "img": "/img/event-rooftop.jpg"
-  },
-  {
-    "title": "Horticultural Society Luncheon",
-    "description": "Come celebrate another great year with Gotham's horticultural elite.",
-    "img": "/img/event-rooftop.jpg"
-  },
-  {
-    "title": "Spring Charity Ball",
-    "description": "Gotham Imperial Hotel invites yout to help us fight TBA.",
-    "img": "/img/event-rooftop.jpg"
-  },
-  {
-    "title": "Halloween Party",
-    "description": "The scariest night of the year in Gotham&hellip; and that's saying a lot!",
-    "img": "/img/event-rooftop.jpg",
-    "date": "10/31"
-  },
-  {
-    "title": "Halloween Party",
-    "description": "The scariest night of the year in Gotham&hellip; and that's saying a lot!",
-    "img": "/img/event-rooftop.jpg",
-    "date": "10/31"
-  }
+    {
+      "id": "1",
+      "title": "Новина №1",
+      "description": "Чотиризірковий готель Favor Park розташований у Києві, за 3,2 км від Національного комплексу “Експоцентр України”. Стійка реєстрації працює вдень і вночі. Чотиризірковий готель Favor Park розташований у Києві, за 3,2 км від Національного комплексу “Експоцентр України”. Стійка реєстрації працює вдень і вночі.",
+      "img": "/img/event-book.jpg",
+      "date": "31.12.2019"
+    },
+    {
+      "id": "2",
+      "title": "Новина №2",
+      "description": "Чотиризірковий готель Favor Park розташований у Києві, за 3,2 км від Національного комплексу “Експоцентр України”. Стійка реєстрації працює вдень і вночі. Чотиризірковий готель Favor Park розташований у Києві, за 3,2 км від Національного комплексу “Експоцентр України”. Стійка реєстрації працює вдень і вночі.",
+      "img": "/img/event-grass.jpg",
+      "date": "20.11.2019"
+    },
+    {
+      "id": "3",
+      "title": "Новина №3",
+      "description": "Чотиризірковий готель Favor Park розташований у Києві, за 3,2 км від Національного комплексу “Експоцентр України”. Стійка реєстрації працює вдень і вночі. Чотиризірковий готель Favor Park розташований у Києві, за 3,2 км від Національного комплексу “Експоцентр України”. Стійка реєстрації працює вдень і вночі.",
+      "img": "/img/event-book.jpg",
+      "date": "11.10.2019"
+    },
+    {
+      "id": "4",
+      "title": "Новина №4",
+      "description": "Чотиризірковий готель Favor Park розташований у Києві, за 3,2 км від Національного комплексу “Експоцентр України”. Стійка реєстрації працює вдень і вночі. Чотиризірковий готель Favor Park розташований у Києві, за 3,2 км від Національного комплексу “Експоцентр України”. Стійка реєстрації працює вдень і вночі.",
+      "img": "/img/event-grass.jpg",
+      "date": "31.09.2019"
+    },
+    {
+      "id": "5",
+      "title": "Новина №5",
+      "description": "Чотиризірковий готель Favor Park розташований у Києві, за 3,2 км від Національного комплексу “Експоцентр України”. Стійка реєстрації працює вдень і вночі. Чотиризірковий готель Favor Park розташований у Києві, за 3,2 км від Національного комплексу “Експоцентр України”. Стійка реєстрації працює вдень і вночі.",
+      "img": "/img/event-book.jpg",
+      "date": "03.07.2019"
+    },
+    {
+      "id": "6",
+      "title": "Новина №6",
+      "description": "Чотиризірковий готель Favor Park розташований у Києві, за 3,2 км від Національного комплексу “Експоцентр України”. Стійка реєстрації працює вдень і вночі. Чотиризірковий готель Favor Park розташований у Києві, за 3,2 км від Національного комплексу “Експоцентр України”. Стійка реєстрації працює вдень і вночі.",
+      "img": "/img/event-grass.jpg",
+      "date": "30.05.2019"
+    }
 ];
 
 var events = [];

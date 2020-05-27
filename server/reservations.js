@@ -83,6 +83,11 @@ var make = function(id, user, arrivalDate, arrivalTime, nights, guests, city) {
   return formatResponseObject(reservation);
 };
 
+var deleteBooking = function(id) {
+  return db.get("reservations").remove({id: id}).value();
+};
+
+
 /**
  * Marks a single reservation as Confirmed, and sends a notification to all subscriptions
  *
@@ -103,6 +108,7 @@ module.exports = {
   getById: getById,
   getByUser: getByUser,
   make: make,
+  deleteBooking: deleteBooking,
   formatResponseObject: formatResponseObject,
   confirm: confirm
 };

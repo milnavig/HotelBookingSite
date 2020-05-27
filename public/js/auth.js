@@ -5,7 +5,7 @@ $("#button").click(function(event) {
     if (data !== undefined) {
       console.log(data);
       //document.cookie = "user=" + encodeURIComponent(data.email);
-      addToObjectStore("auth", {status: "loggined", email: data.email}).then(function(auth) {window.location.href = "https://for-thesis.space/";});
+      addToObjectStore("auth", {status: "loggined", email: data.email}).then(function(auth) {window.location.href = "http://localhost:8443/";});
       
     } else {
         // variant

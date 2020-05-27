@@ -45,13 +45,18 @@ var renderEvents = function(data) {
       "<div class=\"col-lg-12 col-md-12 col-sm-12 event-container\"><div class=\"event-card\"><div id=\"big-block\">"+
       "<img src=\""+event.img+"\" alt=\""+event.title+"\" class=\"img-responsive img-size\" />"+
       "<div id=\"event-block\"><h4>"+event.title+"</h4>"+
-      "<p>"+event.description+"</p></div></div>"+
+      "<p>"+event.description+"</p>"+
+      "<button class=\"details\" id=\"news-"+event.id+"\">Докладніше</button></div></div>"+
       "<div class=\"event-date\">"+event.date+"</div>"+
       "</div></div>"
     ).insertBefore("#events-container div.calendar-link-container");
+    $("#news-"+event.id).click(function() {
+      window.location.href = "/news/"+event.id;
+    });
   });
 };
 
+/*
 navigator.getBattery().then(function(battery) {
   function updateAllBatteryInfo(){
     updateChargeInfo();
@@ -97,4 +102,6 @@ navigator.getBattery().then(function(battery) {
                  + battery.dischargingTime + " seconds");
   }
 
-});
+});*/
+
+

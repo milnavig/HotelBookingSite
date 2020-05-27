@@ -196,7 +196,7 @@ var renderReservation = function(reservation) {
         "</div>"+
       "</div>"+
       "<div class=\"reservation-actions\">"+
-        "<a href=\"#\">Подробиці</a>"+
+        "<a href=\"#\">Скасувати</a>"+
         "<div class=\"reservation-status\">"+reservation["status"]+"</div>"+
       "</div>"+
       "<div class=\"reservation-meta-data\">"+
@@ -211,19 +211,23 @@ var renderReservation = function(reservation) {
   }
 
   // Adds an event listener to the modify reservation button.
-  $("#reservation-"+reservation["id"]+" a").click(function() { //зачем это не совсем понятно
-    /*
-    var possibleResponses = ["Orders are non-negotiable!", "Not open to discussion!"];
-    $(this).text(possibleResponses[Math.floor(Math.random()*possibleResponses.length)]);
-    $(this).addClass("reservation-action--error");
-    return false;*/
+  $("#reservation-"+reservation["id"]+" a").click(function() { 
+    if ("serviceWorker" in navigator && "SyncManager" in window) {
+      $("#reservation-"+reservation["id"]).remove();
+      navigator.serviceWorker.ready.then(function(registration) {
+        registration.sync.register("deletion-"+reservation["id"]);
+      });
+    } else {
+      var bookID = {id: reservation["id"]};
+      $.getJSON("/remove-bookings", bookID, function (res) {
+        deleteBooking(reservation["id"]);
+        $("#reservation-"+reservation["id"]).remove();
+      });
+    }
   });
-
 };
 
 var updateReservationDisplay = function(reservation) {
-  console.log(reservation.status);
-  console.log(reservation);
   var reservationNode = $("#reservation-" + reservation.id);
   $(".reservation-bookedOn", reservationNode).text(reservation.bookedOn);
   $(".reservation-price strong", reservationNode).text(reservation.price+".99" + " ₴");
