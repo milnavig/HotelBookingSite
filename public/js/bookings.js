@@ -52,7 +52,13 @@ var populateReservations = function() {
 // Go over unconfirmed reservations, and verify their status against the server.
 var checkUnconfirmedReservations = function() { //это не понял
   $(".reservation-card--unconfirmed").each(function() {
+    /*
     $.getJSON("/reservation-details.json", {id: $(this).data("id")}, function(data) {
+      updateInObjectStore("reservations", data.id, data);
+      console.log("This data " + data);
+      updateReservationDisplay(data);
+    });*/
+    fetch("/reservation-details.json?id=" + $(this).data("id")).then(function(data) {
       updateInObjectStore("reservations", data.id, data);
       console.log("This data " + data);
       updateReservationDisplay(data);

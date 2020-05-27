@@ -52,7 +52,8 @@ app.get("/reservations.json", function(req, res) {
 });
 
 app.get("/reservation-details.json", function(req, res) {
-  var reservation = reservations.getById(req.query["id"]);
+  //var reservation = reservations.getById(req.query["id"]);
+  var reservation = reservations.getById(req.query.id);
   res.json(reservations.formatResponseObject(reservation));
 });
 
