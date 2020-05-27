@@ -59,9 +59,11 @@ var checkUnconfirmedReservations = function() { //это не понял
       updateReservationDisplay(data);
     });*/
     fetch("/reservation-details.json?id=" + $(this).data("id")).then(function(data) {
-      updateInObjectStore("reservations", data.id, data);
-      console.log("This data " + data);
-      updateReservationDisplay(data);
+      data.json().then(function(data) {
+        updateInObjectStore("reservations", data.id, data);
+        console.log("This data " + data);
+        updateReservationDisplay(data);
+      });
     });
   });
 };
