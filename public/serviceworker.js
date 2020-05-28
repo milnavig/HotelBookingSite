@@ -270,6 +270,8 @@ var syncReservations = function() { // переделать
           ).then(function() {
             console.log(newReservation);
             postReservationDetails(newReservation);
+          }).catch(function() {
+            console.log("Catch error");
           });
         });
       })
