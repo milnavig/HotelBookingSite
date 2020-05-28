@@ -252,13 +252,17 @@ var postReservationDetails = function(reservation) {
 };
 
 var syncReservations = function() { // переделать
+  console.log("Try to sync 0");
   return getReservations("idx_status", "Відправлення").then(function(reservations) {
     return Promise.all(
       reservations.map(function(reservation) {
+        console.log("Try to sync 1");
         var reservationUrl = createReservationUrl(reservation);
         return fetch(reservationUrl).then(function(response) {
+          console.log("Try to sync 2");
           return response.json();
         }).then(function(newReservation) {
+          console.log("Try to sync 3");
           return updateInObjectStore(
             "reservations",
             newReservation.id,
