@@ -282,7 +282,7 @@ var syncReservations = function() { // переделать
 self.addEventListener("sync", function(event) {
   if (event.tag === "sync-reservations") {
     console.log("Try to sync");
-    event.waitUntil(setTimeout(syncReservations(), 5000));
+    event.waitUntil(syncReservations());
   } else if (event.tag.startsWith("deletion-")) {
     var id = event.tag.split("-")[1];
     event.waitUntil(
