@@ -65,6 +65,11 @@ var checkUnconfirmedReservations = function() { //это не понял
         updateReservationDisplay(data);
       });
     });
+    navigator.serviceWorker.ready.then(function(registration) {
+      registration.sync.getTags().then(function(tags) {
+        console.log(tags);
+      });
+    });
   });
 };
 

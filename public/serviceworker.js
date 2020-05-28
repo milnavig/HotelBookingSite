@@ -96,7 +96,7 @@ self.addEventListener("activate", function(event) {
 });
 
 self.addEventListener("fetch", function(event) {
-  console.log("Fetched " + event.request.url);
+  //console.log("Fetched " + event.request.url);
   var requestURL = new URL(event.request.url);
   // Handle requests for index.html
   if (requestURL.pathname === "/" || requestURL.pathname === "/index.html") {
@@ -183,7 +183,6 @@ self.addEventListener("fetch", function(event) {
               var myResponse;
               data.forEach(function(item) {
                 if (item.id === value) {
-                  console.log("Res" + item.id);
                   var data = item;
                   var blob = new Blob([JSON.stringify(data, null, 2)], {type : "application/json"});
 
@@ -276,10 +275,10 @@ var syncReservations = function() { // переделать
 
 self.addEventListener("sync", function(event) {
   if (event.tag === "sync-reservations") {
+    console.log("Try to sync");
     event.waitUntil(syncReservations());
   } else if (event.tag.startsWith("deletion-")) {
     var id = event.tag.split("-")[1];
-    console.log(id);
     event.waitUntil(
       fetch("/remove-bookings?id="+id).then(function(response) {
         return deleteBooking(id);
@@ -289,18 +288,18 @@ self.addEventListener("sync", function(event) {
 });
 
 self.addEventListener("message", function (event) {
-  console.log("Message received:", event.data);
-  console.log("From a window with the id:", event.source.id);
-  console.log("which is currently pointing at:",  event.source.url);
-  console.log("and is", event.source.focused ? "focused" : "not focused");
-  console.log("and", event.source.visibilityState);
+  //console.log("Message received:", event.data);
+  //console.log("From a window with the id:", event.source.id);
+  //console.log("which is currently pointing at:",  event.source.url);
+  //console.log("and is", event.source.focused ? "focused" : "not focused");
+  //console.log("and", event.source.visibilityState);
   var data = event.data;
   if (data.action === "new-reservation") {
     self.clients.matchAll({ includeUncontrolled: true }).then(function(clients) {
       
       clients.forEach(function(client) {
-        console.log(client.id);
-        console.log(event.source.id);
+        //console.log(client.id);
+        //console.log(event.source.id);
         if(client.id != event.source.id) {
           client.postMessage({action: "update-list", reservation: data.reservation});
         }
