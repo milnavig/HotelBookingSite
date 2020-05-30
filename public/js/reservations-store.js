@@ -107,6 +107,7 @@ var getReservations = function(indexName, indexValue) {
   var now = new Date();
   var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + ":" + now.getMilliseconds();
   console.log("Початок отримання з БД: " + time);
+  $("#battery-info").prepend("<p>Початок отримання з БД: "+ time +" </p>");
   return new Promise(function(resolve) {
     openDatabase().then(function(db) {
       var objectStore = openObjectStore(db, "reservations");
@@ -126,6 +127,7 @@ var getReservations = function(indexName, indexValue) {
           var now = new Date();
           var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + ":" + now.getMilliseconds();
           console.log("Кінець отримання з БД: " + time);
+          $("#battery-info").prepend("<p>Кінець отримання з БД: "+ time +" </p>");
           console.log(reservations.length);
           if (reservations.length > 0) {
             resolve(reservations);
@@ -134,6 +136,7 @@ var getReservations = function(indexName, indexValue) {
               var now = new Date();
               var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + ":" + now.getMilliseconds();
               console.log("Початок запису у БД: " + time);
+              $("#battery-info").prepend("<p>Початок запису у БД: "+ time +" </p>");
               openDatabase().then(function(db) {
                 var objectStore = openObjectStore(db, "reservations", "readwrite");
                 for (var i = 0; i < reservations.length; i++) {
@@ -142,6 +145,7 @@ var getReservations = function(indexName, indexValue) {
                 var now = new Date();
                 var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + ":" + now.getMilliseconds();
                 console.log("Кінець запису у БД: " + time);
+                $("#battery-info").prepend("<p>Кінець запису у БД: "+ time +" </p>");
                 resolve(reservations);
               });
               caches.open("site-cache-v1").then(function(cache) { // зачем?
